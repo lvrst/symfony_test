@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Teacher{% endblock %}
+
+{% block body %}
+    <h1>Teacher</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ teacher.id }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ teacher.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ teacher.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ teacher.phone }}</td>
+            </tr>
+            <tr>
+                <th>Tags</th>
+                <td>
+                    <ul>
+                    {% for tag in teacher.tags %}
+                        <li>{{ tag.name }}</li>
+                    {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Schoolyear(s)</th>
+                <td>
+                    <ul>
+                    {% for schoolYear in teacher.schoolYears %}
+                        <li>{{ schoolYear.name }}</li>
+                    {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('teacher_index') }}">back to list</a>
+
+    <a href="{{ path('teacher_edit', {'id': teacher.id}) }}">edit</a>
+
+    {{ include('teacher/_delete_form.html.twig') }}
+{% endblock %}
